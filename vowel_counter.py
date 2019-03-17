@@ -1,12 +1,15 @@
 
 def vowel_counter():
     mystr = input("input a  string of  your choice")
+    mystr = mystr.casefold()
     mystr_list= list(mystr)
-    vowels=['a','e','i','o','u','A','E','I','O','U']
+    vowels=['a','e','i','o', 'u']
     count = 0
-    for i in vowels:
-            for j in mystr_list:
-                    if i==j:
-                            count +=1
-                            print(j, count)
-vowel_counter()
+    mystrVowel =[]
+    for j in mystr_list:
+        if j in vowels and j not in mystrVowel:
+                mystrVowel.append(j)
+    duplicates=set([j for j in mystr_list if mystr_list.count(j)>1])
+    mytuple = mystrVowel, len(duplicates)
+    print (mytuple) 
+vowel_counter()    
